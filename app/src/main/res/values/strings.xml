@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MyApplication</string>
+    <string name="clien_name">Nom</string>
+    <string name="add_client">Ajouter</string>
+    <string name="first_name">Prénom</string>
+    <string name="sexe">Sexe</string>
+    <string name="email">Email</string>
+    <string name="niveau">Niveau</string>
+    <string name="age">Age</string>
+    <string name="age_selected">0</string>
+    <string-array name="levels_array">
+        <item>Débutant</item>
+        <item>Moyen</item>
+        <item>Confirmé</item>
+    </string-array>
+</resources>
