@@ -1,7 +1,6 @@
 package com.jdv.ulysse.myapplication.activities;
 
 import android.content.Intent;
-import android.support.v4.app.ListFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,14 +15,14 @@ import com.jdv.ulysse.myapplication.R;
 import com.jdv.ulysse.myapplication.adapters.ClientAdapter;
 import com.jdv.ulysse.myapplication.models.Client;
 
-public class ClientListFrament extends ListFragment {
+public class ClientListActivity extends AppCompatActivity {
 
     private ListView listView;
     private static final String TAG = "ClientAddActivity";
     private Intent intent;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_list_client);
