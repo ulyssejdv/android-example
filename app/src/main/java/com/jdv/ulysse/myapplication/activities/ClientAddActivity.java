@@ -1,5 +1,6 @@
-package com.jdv.ulysse.myapplication;
+package com.jdv.ulysse.myapplication.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,11 +12,14 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import com.jdv.ulysse.myapplication.R;
+import com.jdv.ulysse.myapplication.models.Client;
+
+public class ClientAddActivity extends AppCompatActivity {
 
 
 
-    private TextView sel_age;
+    private TextView selAge;
 
     private EditText lastnameEditText;
     private EditText firstnameEditText;
@@ -23,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private String genre;
     private Spinner spinner;
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "ClientAddActivity";
     private EditText emailEditText;
     private Switch actifSwitch;
 
@@ -36,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
         emailEditText = (EditText) findViewById(R.id.email_edit_text);
         actifSwitch = (Switch) findViewById(R.id.switch1);
         ageControl = (SeekBar) findViewById(R.id.seekBar);
-        sel_age = (TextView) findViewById(R.id.sel_age);
-        sel_age.setText(String.valueOf(ageControl.getProgress()));
+        selAge = (TextView) findViewById(R.id.sel_age);
+        selAge.setText(String.valueOf(ageControl.getProgress()));
         ageControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                sel_age.setText(String.valueOf(progress));
+                selAge.setText(String.valueOf(progress));
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -60,13 +64,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onAddButtonClick(View view) {
-        String lastName = lastnameEditText.getText().toString();
-        String firstname = firstnameEditText.getText().toString();
-        int age = Integer.parseInt(sel_age.getText().toString());
-        String email = emailEditText.getText().toString();
-        String level = spinner.getSelectedItem().toString();
-        Boolean act = actifSwitch.isChecked();
-        Client c = new Client(firstname, lastName, age, email, genre, level, act);
+
+        // Create a new client with form data
+        Client client = new Client();
+        client.setFirstName(firstnameEditText.getText().toString());
+        client.setLastName(lastnameEditText.getText().toString());
+        client.setActiv(actifSwitch.isChecked());
+        client.setAge(Integer.parseInt(selAge.getText().toString()));
+        client.setEmail(emailEditText.getText().toString());
+        client.setGender(genre);
+        client.setLevel(spinner.getSelectedItem().toString());
+
+        // Add client to the list (DB like)
+        Client.addClient(client);
+
+        // Go to the list activity
+        Intent intent = new Intent(this, ClientListActivity.class);
+        startActivity(intent);
     }
 
     public void onRadioButtonClicked(View view) {
