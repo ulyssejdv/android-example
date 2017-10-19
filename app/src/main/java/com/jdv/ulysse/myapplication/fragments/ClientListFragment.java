@@ -1,8 +1,12 @@
 package com.jdv.ulysse.myapplication.fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.ListFragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -12,6 +16,12 @@ import com.jdv.ulysse.myapplication.fragments.ClientDetailsFragment;
 import com.jdv.ulysse.myapplication.models.Client;
 
 public class ClientListFragment extends ListFragment {
+
+    public interface OnClientSelectedListener {
+        void onClientSelected(int id);
+    }
+
+    private OnClientSelectedListener listener;
 
     private static final String TAG = "ClientAddActivity";
 
@@ -23,14 +33,20 @@ public class ClientListFragment extends ListFragment {
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        FragmentActivity activity = getActivity();
+        if (activity instanceof OnClientSelectedListener) {
+            listener = (OnClientSelectedListener) activity;
+        }
+    }
+
+    @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        // Get client from database
-        Client client = Client.getClients().get(position);
-        Bundle bundle = new Bundle();
-        bundle.putInt("CLIENT_ID", position);
-        Intent intent = new Intent(getActivity(), ClientDetailActivity.class);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        Log.d(TAG, "onListItemClick: ");
+        if (listener != null) {
+            listener.onClientSelected(position);
+        }
+
     }
 }
