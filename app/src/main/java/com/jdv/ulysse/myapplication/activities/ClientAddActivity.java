@@ -34,7 +34,7 @@ public class ClientAddActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_client_add);
         lastnameEditText = (EditText) findViewById(R.id.lastname_edit_text);
         firstnameEditText = (EditText) findViewById(R.id.firstname_edit_text);
         emailEditText = (EditText) findViewById(R.id.email_edit_text);
@@ -79,7 +79,7 @@ public class ClientAddActivity extends AppCompatActivity {
         Client.addClient(client);
 
         // Go to the list activity
-        Intent intent = new Intent(this, ClientListActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 
