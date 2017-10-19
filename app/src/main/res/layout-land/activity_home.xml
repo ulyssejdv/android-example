@@ -25,20 +25,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <fragment
             android:id="@+id/list_client_fragment_land"
             android:name="com.jdv.ulysse.myapplication.fragments.ClientListFragment"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1"
             tools:layout="@layout/activity_list_client" />
 
         <fragment
             android:id="@+id/detail_client_fragment_land"
             android:name="com.jdv.ulysse.myapplication.fragments.ClientDetailsFragment"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             tools:layout="@layout/activity_detail_client" />
     </LinearLayout>
 
