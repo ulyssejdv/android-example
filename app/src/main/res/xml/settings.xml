@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="@string/settings_values_list_client_1"
+        android:entries="@array/settings_list_clients_text"
+        android:entryValues="@array/settings_list_clients_values"
+        android:key="naming_mode_preferences"
+        android:title="Mode affichage des clients" />
+</PreferenceScreen>

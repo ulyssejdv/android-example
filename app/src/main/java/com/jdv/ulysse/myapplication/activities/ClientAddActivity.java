@@ -3,6 +3,7 @@ package com.jdv.ulysse.myapplication.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -35,6 +36,12 @@ public class ClientAddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_add);
+
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+
         lastnameEditText = (EditText) findViewById(R.id.lastname_edit_text);
         firstnameEditText = (EditText) findViewById(R.id.firstname_edit_text);
         emailEditText = (EditText) findViewById(R.id.email_edit_text);

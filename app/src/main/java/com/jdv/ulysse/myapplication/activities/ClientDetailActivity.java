@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.jdv.ulysse.myapplication.R;
@@ -19,7 +20,11 @@ public class ClientDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_client_detail);
+        setContentView(R.layout.activity_client_detail);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         idClient = bundle.getInt("CLIENT_ID");
@@ -30,6 +35,4 @@ public class ClientDetailActivity extends AppCompatActivity {
                 findFragmentById(R.id.details_client_fragment);
         fragment.updateClient(idClient);
     }
-
-
 }

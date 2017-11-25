@@ -8,9 +8,25 @@
     <string name="niveau">Niveau</string>
     <string name="age">Age</string>
     <string name="age_selected">0</string>
+
     <string-array name="levels_array">
         <item>Débutant</item>
         <item>Moyen</item>
         <item>Confirmé</item>
     </string-array>
+
+    <string-array name="settings_list_clients_text">
+        <item>Prénom Nom</item>
+        <item>Nom Prénom</item>
+    </string-array>
+
+    <string-array name="settings_list_clients_values">
+        <item>@string/settings_values_list_client_1</item>
+        <item>@string/settings_values_list_client_2</item>
+    </string-array>
+
+    <string name="settings_values_list_client_1">PRENOM_NOM</string>
+    <string name="settings_values_list_client_2">NOM_PRENOM</string>
+
+
 </resources>

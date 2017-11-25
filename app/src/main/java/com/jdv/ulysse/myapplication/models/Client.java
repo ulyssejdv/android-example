@@ -25,7 +25,7 @@ public class Client {
 
     private static List<Client> clients = new ArrayList<Client>();
 
-    static {
+    /*static {
         for (int i=0; i < 50; i++) {
             Client c = new Client(
                     "firstName"+i,
@@ -38,7 +38,7 @@ public class Client {
             );
             Client.addClient(c);
         }
-    }
+    }*/
 
     public static List<Client> getClients() {
         return clients;

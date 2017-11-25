@@ -11,14 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/my_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        <include layout="@layout/menu_toolbar" />
     </LinearLayout>
 
 
@@ -40,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            tools:layout="@layout/activity_detail_client" />
+            tools:layout="@layout/detail_client" />
     </LinearLayout>
 
 </LinearLayout>

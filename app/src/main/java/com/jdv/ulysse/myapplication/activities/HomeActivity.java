@@ -23,6 +23,7 @@ public class HomeActivity extends AppCompatActivity implements ClientListFragmen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
@@ -41,6 +42,8 @@ public class HomeActivity extends AppCompatActivity implements ClientListFragmen
                 Log.d(TAG, "onOptionsItemSelected: click on add");
                 startActivity(new Intent(this, ClientAddActivity.class));
                 return true;
+            case R.id.action_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
             default:
                 return super.onOptionsItemSelected(item);
 

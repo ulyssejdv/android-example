@@ -1,146 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="com.jdv.ulysse.myapplication.activities.ClientAddActivity">
+    <include layout="@layout/menu_toolbar" />
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
 
-        <!-- Last Name -->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/clien_name" />
-
-        <EditText
-            android:id="@+id/lastname_edit_text"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context="com.jdv.ulysse.myapplication.activities.ClientAddActivity">
 
 
+            <!-- Last Name -->
 
-        <!-- First Name -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/first_name" />
-
-        <EditText
-            android:id="@+id/firstname_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-        <!-- Gender -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sexe" />
-
-
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:checkedButton="@+id/radioMan"
-            android:orientation="vertical">
-
-            <RadioButton
-                android:id="@+id/radioWoman"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Femme"
-                android:onClick="onRadioButtonClicked" />
+                android:text="@string/clien_name" />
 
-            <RadioButton
-                android:id="@+id/radioMan"
+            <EditText
+                android:id="@+id/lastname_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <!-- First Name -->
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Homme"
-                android:onClick="onRadioButtonClicked" />
+                android:text="@string/first_name" />
 
-        </RadioGroup>
-
-
-
-        <!-- Email -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/email" />
-
-        <EditText
-            android:id="@+id/email_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/firstname_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
 
+            <!-- Gender -->
 
-        <!-- Level -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/niveau" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sexe" />
 
 
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/radioMan"
+                android:orientation="vertical">
 
-        <!-- Age -->
+                <RadioButton
+                    android:id="@+id/radioWoman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Femme"
+                    android:onClick="onRadioButtonClicked" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/age" />
+                <RadioButton
+                    android:id="@+id/radioMan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Homme"
+                    android:onClick="onRadioButtonClicked" />
 
-        <!-- Display age -->
-        <TextView
-            android:id="@+id/sel_age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/age_selected" />
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:max="75"
-            android:progress="25" />
+            </RadioGroup>
 
 
 
-        <!-- Activity -->
+            <!-- Email -->
 
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Actif" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/email_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
 
 
-        <!-- Send Form -->
+            <!-- Level -->
 
-        <Button
-            android:onClick="onAddButtonClick"
-            android:textAllCaps="false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/add_client"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/niveau" />
 
-    </LinearLayout>
-</ScrollView>
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <!-- Age -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/age" />
+
+            <!-- Display age -->
+            <TextView
+                android:id="@+id/sel_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/age_selected" />
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="75"
+                android:progress="25" />
+
+
+
+            <!-- Activity -->
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Actif" />
+
+
+
+            <!-- Send Form -->
+
+            <Button
+                android:onClick="onAddButtonClick"
+                android:textAllCaps="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_client"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
