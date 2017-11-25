@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.jdv.ulysse.myapplication.R;
+import com.jdv.ulysse.myapplication.SynchroService;
 import com.jdv.ulysse.myapplication.fragments.ClientDetailsFragment;
 import com.jdv.ulysse.myapplication.fragments.ClientListFragment;
 import com.jdv.ulysse.myapplication.models.Client;
@@ -44,6 +45,8 @@ public class HomeActivity extends AppCompatActivity implements ClientListFragmen
                 return true;
             case R.id.action_settings:
                 startActivity(new Intent(this, SettingsActivity.class));
+            case R.id.action_sync_client:
+                this.startService(new Intent(this, SynchroService.class));
             default:
                 return super.onOptionsItemSelected(item);
 

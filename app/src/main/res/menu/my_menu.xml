@@ -8,6 +8,11 @@
         android:title="Add Client"
         app:showAsAction="ifRoom" />
 
+    <item android:id="@+id/action_sync_client"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:title="Sync Clients"
+        app:showAsAction="ifRoom"
+        />
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings_black_24dp"

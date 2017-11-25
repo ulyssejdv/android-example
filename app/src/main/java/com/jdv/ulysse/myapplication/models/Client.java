@@ -1,12 +1,13 @@
 package com.jdv.ulysse.myapplication.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * Created by ulysse on 05/10/2017.
  */
-
 public class Client {
 
 
@@ -15,12 +16,28 @@ public class Client {
 
     }
 
+    @Expose
+    @SerializedName("prenom")
     private String firstName;
+
+    @Expose
+    @SerializedName("nom")
     private String lastName;
+
     private int age;
+
+    @Expose
+    @SerializedName("email")
     private String email;
+
     private String gender;
+
+    @Expose
+    @SerializedName("niveau")
     private String level;
+
+    @Expose
+    @SerializedName("actif")
     private Boolean activ;
 
     private static List<Client> clients = new ArrayList<Client>();

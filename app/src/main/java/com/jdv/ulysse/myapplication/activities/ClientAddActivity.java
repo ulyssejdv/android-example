@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -12,14 +13,31 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.jdv.ulysse.myapplication.R;
+import com.jdv.ulysse.myapplication.SynchroService;
 import com.jdv.ulysse.myapplication.models.Client;
+import com.jdv.ulysse.myapplication.services.ClientRestService;
+
+import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.content.ContentValues.TAG;
 
 public class ClientAddActivity extends AppCompatActivity {
 
 
-
+    public static final String ADD_CLIENT_ACTION = "ADD_CLIENT_ACTION";
     private TextView selAge;
 
     private EditText lastnameEditText;
@@ -31,6 +49,7 @@ public class ClientAddActivity extends AppCompatActivity {
     private static final String TAG = "ClientAddActivity";
     private EditText emailEditText;
     private Switch actifSwitch;
+    private ClientRestService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +87,29 @@ public class ClientAddActivity extends AppCompatActivity {
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.addInterceptor(httpLoggingInterceptor);
+
+        OkHttpClient httpClient = builder.build();
+
+        Gson gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .setPrettyPrinting()
+                .create();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://ama-gestion-clients.appspot.com")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(httpClient)
+                .build();
+
+        service = retrofit.create(ClientRestService.class);
+
     }
 
     public void onAddButtonClick(View view) {
@@ -83,11 +125,29 @@ public class ClientAddActivity extends AppCompatActivity {
         client.setLevel(spinner.getSelectedItem().toString());
 
         // Add client to the list (DB like)
-        Client.addClient(client);
+        // Client.addClient(client);
+
+        Call<Void> voidCall = service.addClient(client);
+        voidCall.enqueue(new Callback<Void>() {
+
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d(TAG, "onResponse: OK");
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d(TAG, "onFailure: OK");
+            }
+        });
 
         // Go to the list activity
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
+
+
+        sendBroadcast(new Intent(ADD_CLIENT_ACTION));
+        finish();
     }
 
     public void onRadioButtonClicked(View view) {
