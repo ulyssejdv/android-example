@@ -46,7 +46,7 @@ public class SynchroService extends IntentService {
 
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://ama-gestion-clients.appspot.com")
+                .baseUrl("http://172.20.10.7:5000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient)
                 .build();

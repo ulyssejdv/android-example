@@ -15,7 +15,7 @@ import retrofit2.http.POST;
 
 public interface ClientRestService {
 
-    @GET("/rest/client")
+    @GET("/users")
     Call<List<Client>> getClients();
 
     @POST("rest/client")
